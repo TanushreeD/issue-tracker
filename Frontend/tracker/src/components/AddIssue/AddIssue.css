@@ -1,0 +1,38 @@
+ label input, select{
+    display: block;
+    text-align: left;
+    width: 395px;
+
+}
+h3{
+    text-align: center;
+    color:#090909;
+    margin-top: 1.2rem;
+    margin-bottom: -1rem;
+    font-size: 1.5rem;
+  }
+  .container{
+    background-color: beige;
+    height: 550px;
+    width: 810px;
+    padding: 17px;
+  }
+  .card{
+    height: 520px;
+    width: 600px;
+    margin-left: 63px;
+    background-color:#42a5f5;
+    padding: 10px;
+    box-shadow: 5px 10px 18px #888888;
+  
+  }
+.card-body input{
+    width:395px;
+}
+.card-body{
+    padding:3rem 7rem;
+  }
+label input, label select{
+    width: 100%;
+    padding: 15px;
+}
