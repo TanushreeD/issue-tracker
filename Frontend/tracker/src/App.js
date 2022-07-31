@@ -1,4 +1,6 @@
 import './App.css';
+import SignUp from './components/SignUp';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddIssue from "./components/AddIssue/AddIssue";
 import CurrentIssue from "./components/CurrentIssue/CurrentIssue";
 
@@ -9,10 +11,13 @@ function App() {
   const [addIssue, setAddIssue] = useState(true)
   return (
     <div className='grey-card-container'>
-      {addIssue ? <AddIssue/>: <CurrentIssue/>}
       <div>
-        <button className='mt-3 Add_button'>Current Issue</button>
-        <button className='mt-3 view_button' >Add Issue</button>
+        <BrowserRouter>
+        <Routes >
+           <Route element={<SignUp></SignUp>} path="SignUp" />
+           <Route element ={<AddIssue></AddIssue>} path="add"/>
+           </Routes>
+        </BrowserRouter>
       </div>
       
     </div>
