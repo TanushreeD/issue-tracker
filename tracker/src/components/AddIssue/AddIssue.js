@@ -27,10 +27,10 @@ function AddIssue() {
                                 {({ values, handleChange, handleSubmit }) => (
 
                                     <form onSubmit={handleSubmit}>
-                                        <TextField className='mt-3'  label="Title" id="title" onChange={handleChange} value={values.title} />
+                                        <TextField className='mt-3'  label="Issue Title" id="title" onChange={handleChange} value={values.title} />
                                         <TextField className='mt-3' label="Description" id="description" onChange={handleChange} value={values.description} />
                                         <FormControl sx={{ m: 0, width: 420 , marginTop:3}}>
-                                        <InputLabel id="assigns">Assign to</InputLabel>
+                                        <InputLabel id="assigns">Opened by</InputLabel>
                                         
                                         <Select
                                             labelId="assign-label"
