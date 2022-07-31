@@ -2,7 +2,12 @@ import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
+
+    const navigate= useNavigate();
 
 
     //1. create a form object which should match with model fields
@@ -13,8 +18,32 @@ const SignUp = () => {
     }
 
     //2. create a function for form submission
-    const userSubmit = (formdata) => {
+    const userSubmit = async (formdata) => {
         console.log(formdata);
+        const response = await fetch('http://localhost:5000/user/add',{
+    method:'POST',
+    body: JSON.stringify(formdata),
+    headers:{
+      'Content-Type' : 'application/json'
+    }
+  })
+  if(response.status === 200){
+    console.log('success');
+    Swal.fire({
+      icon:"success",
+      title: "Well Done!!👌",
+      text: "Wonderful JOB!!"
+    })
+    navigate("/login")
+  }else{
+    console.log('error occured');
+    Swal.fire({
+      icon:"error",
+      title: "Try Again!!😒",
+      text: "search for error!!"
+    });
+  
+  }
     };
 
     

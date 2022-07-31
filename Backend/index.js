@@ -1,13 +1,30 @@
-const express = require ('express');
-const app = express();
-const port= 5000;
+const express =require('express');
 
-app.use(express.json());
+const app= express();
 
-app.get('/home', (req,res) =>{
-    res.send("hello express");
-})
+const port = 5000;
 
-app.listen(port, ()=>{
-    console.log("the server has started");
+const userRouter= require('./routers/userRouter');
+const issueRouter= require('./routers/issueRouter');
+const teamRouter= require('./routers/teamRouter');
+ 
+const cors = require('cors');
+app.use(express.json()); 
+
+app.use(cors({origin: ['http://localhost:3000'] }))   
+
+app.use('/user', userRouter);
+app.use('/issue', issueRouter);
+app.use('/team', teamRouter);
+
+
+app.get('/',(req,res) =>{
+    res.send("Response from express");
 });
+
+app.get('/home',(req,res) =>{
+    res.send("Response from express home");
+});
+
+
+app.listen(port,()=> console.log("server started"));

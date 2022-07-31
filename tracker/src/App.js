@@ -6,6 +6,8 @@ import CurrentIssue from "./components/CurrentIssue/CurrentIssue";
 
 
 import { useState } from 'react';
+import Home from './components/Home';
+import Login from './components/Login';
 
 function App() {
   const [addIssue, setAddIssue] = useState(true)
@@ -15,7 +17,9 @@ function App() {
         <BrowserRouter>
         <Routes >
            <Route element={<SignUp></SignUp>} path="SignUp" />
+           <Route element={<Login />} path="login" />
            <Route element ={<AddIssue></AddIssue>} path="add"/>
+           <Route element ={<Home></Home>} path="home"/>
            </Routes>
         </BrowserRouter>
       </div>
