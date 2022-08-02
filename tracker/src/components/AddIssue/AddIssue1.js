@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 
 const AddIssue1 = () => {
 
-    const [addIssue, setAddIssue] = useState(true)
+    const [addIssue, setAddIssue] = useState(true);
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
     
     const userSubmit = async (formdata) => {
         console.log(formdata);
@@ -42,12 +43,8 @@ const AddIssue1 = () => {
                             title: '',
                             type: '',
                             assingedTo: '',
-                            assingedBy: '',
-                            createdAt: '',
-                            status: '',
-                            closed: '',
-                            team: '',
-                            org: ''
+                            assingedBy: currentUser._id,
+                            createdAt: new Date(),
                         }}
                         onSubmit={userSubmit}>
                         {({ values, handleChange, handleSubmit }) => (
