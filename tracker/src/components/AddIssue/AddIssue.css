@@ -4,13 +4,13 @@ h3{
     margin-bottom: 7px;
     font-size: 1.9rem;
   }
-  .container{
+  .contain{
     background-color: beige;
     height: 557px;
     width: 810px;
     padding: 17px;
   }
-  .card{
+  .cards{
     height: 520px;
     width: 603px;
     margin-left: 70px;

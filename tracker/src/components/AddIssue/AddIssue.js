@@ -10,32 +10,39 @@ function AddIssue() {
     };
     return (
         <div className='adds' >
-            <div className='container mt-5'>
+            <div className='container mt-5 contain'>
                 
-                <div className='card'>
-                    <div className='card-body'>
-                    <h3>ISSUE TRACKER</h3>
+                <div className='card cards'>
+                    <div className='card-body bg-transparent'>
+                    <h3>ISSUE RECORD FORM</h3>
                         <div>
                             <Formik initialValues={{
                                 title: '',
-                                description: '',
-                                assigns: '',
-                                dates: '',
-                                state: '',
+                                type: '',
+                                assingedTo: '',
+                                assingedBy: '',
+                                createdAt: '',
+                                status: '',
+                                closed: '',
+                                team: '',
+                                org:''
+                                
                             }}
                                 onSubmit={userSubmit}>
                                 {({ values, handleChange, handleSubmit }) => (
 
                                     <form onSubmit={handleSubmit}>
-                                        <TextField className='mt-3'  label="Issue Title" id="title" onChange={handleChange} value={values.title} />
-                                        <TextField className='mt-3' label="Description" id="description" onChange={handleChange} value={values.description} />
+                                        <TextField className='mt-3'  label="Issue Title" id="title" 
+                                        onChange={handleChange} 
+                                        value={values.title} />
+                                        <TextField className='mt-3' label="Description" id="type" onChange={handleChange} value={values.type} />
                                         <FormControl sx={{ m: 0, width: 420 , marginTop:3}}>
-                                        <InputLabel id="assigns">Opened by</InputLabel>
+                                        <InputLabel id="assignedTo">Opened by</InputLabel>
                                         
                                         <Select
                                             labelId="assign-label"
-                                            id="assigns"
-                                            value={values.assigns}
+                                            id="assingedTo"
+                                            value={values.assingedTo}
                                             label="Assign to"
                                             onChange={handleChange}
                                             
@@ -46,19 +53,35 @@ function AddIssue() {
                                         </Select>
                                         </FormControl>
                                     
-                                        <TextField className='mt-3' type="date"  id="dates" onChange={handleChange} value={values.dates} />
+                                        <TextField className='mt-3' type="date"  id="createdAt" onChange={handleChange} value={values.createdAt} />
+                                        <TextField className='mt-3' label="organisation" id="org" onChange={handleChange} value={values.org} />
 
                                         <FormControl sx={{ m: 0, width: 420 , marginTop:3}}>
-                                        <InputLabel id="state">Status</InputLabel>
+                                        <InputLabel id="status">Status</InputLabel>
                                         <Select
                                             labelId="status"
-                                            id="state"
+                                            id="status"
                                             value={values.status}
                                             label="Status"
                                             onChange={handleChange}
                                         >
-                                            <MenuItem value={10}>Completed</MenuItem>
-                                            <MenuItem value={20}>Not Completed</MenuItem>
+                                            <MenuItem value={10}>New</MenuItem>
+                                            <MenuItem value={20}>old</MenuItem>
+                                            
+                                        </Select>
+                                        </FormControl>
+
+                                        <FormControl sx={{ m: 0, width: 420 , marginTop:3}}>
+                                        <InputLabel id="closed">Close</InputLabel>
+                                        <Select
+                                            labelId="closed"
+                                            id="closed"
+                                            value={values.closed}
+                                            label="closed"
+                                            onChange={handleChange}
+                                        >
+                                            <MenuItem value={10}>yes</MenuItem>
+                                            <MenuItem value={20}>no</MenuItem>
                                             
                                         </Select>
                                         </FormControl>

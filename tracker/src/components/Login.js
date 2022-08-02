@@ -6,39 +6,39 @@ import Swal from "sweetalert2"
 import * as Yup from "yup"
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const userSubmit = async (formdata) => {
     console.log(formdata)
 
     const res = await fetch("http://localhost:5000/user/authenticate", {
-      method: "POST",
-      body: JSON.stringify(formdata),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-
-    if (res.status === 200) {
-      console.log("success")
-      Swal.fire({
-        icon: "success",
-        title: "Wellcome!!👌",
-        text: "Enter a new World!!",
-      })
-      const data = await res.json()
-      sessionStorage.setItem("user", JSON.stringify(data))
-      navigate("/Issues")
-      //navigate("/login")
-    } else {
-      console.log("Login error ")
-      Swal.fire({
-        icon: "error",
-        title: "Try Again!!😒",
-        text: "Check your email and password!!",
-      })
-    }
-  }
+        method: "POST",
+        body: JSON.stringify(formdata),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (res.status === 200) {
+        console.log("success");
+        Swal.fire({
+          icon: "success",
+          title: "Wellcome!!👌",
+          text: "Enter a new World!!",
+        });
+        navigate("/");
+        const data = await res.json();
+        sessionStorage.setItem("user", JSON.stringify(data));
+      } else {
+        console.log("Login error ");
+        Swal.fire({
+          icon: "error",
+          title: "Try Again!!😒",
+          text: "Check your email and password!!",
+        });
+      }
+  
+    };
 
   const SignupSchema = Yup.object().shape({
     password: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
@@ -97,7 +97,7 @@ const Login = () => {
                           Login
                         </Button>
                         <p className="mt-0">
-                          Need an account? <Link to="/Register">Register</Link>
+                          Need an account? <Link to="/SignUp">Sign up</Link>
                         </p>
                       </form>
                     )}
