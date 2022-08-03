@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-// import UpdateUser from "./UpdateUser";
+import UpdateUser from "./UpdateUser";
 
 const UserManager = () => {
   const [userArray, setUserArray] = useState([]);
@@ -98,7 +98,7 @@ const UserManager = () => {
   };
   return (
     <div>
-      <h1 className="text-center">faltu log ka faltu data</h1>
+      <h1 className="text-center">data</h1>
       <div className="row">
         <div className="col-md">
           <table className="table table-dark">
@@ -117,11 +117,11 @@ const UserManager = () => {
         </div>
         {showUpdateForm ? (
           <div className="col-md">
-            {/* <UpdateUser
+             <UpdateUser
               updateFormData={updateFormData}
               setShowUpdateForm={setShowUpdateForm}
               getDataFromBackend={getDataFromBackend}
-            /> */}
+            />
           </div>
         ) : (
           " "

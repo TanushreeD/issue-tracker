@@ -70,7 +70,7 @@ const IssueManager = () => {
           </div>
         );
       } else {
-        return userArray.map(({ _id,title,type,assignedBy, assignedTo, org,createdAt, status, closed, team }) => (
+        return userArray.map(({ _id,title,type,assignedBy, assignedTo, org,createdAt, status, closed }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{type}</td>
@@ -80,11 +80,11 @@ const IssueManager = () => {
             <td>{org}</td>
             <td>{status}</td>
             <td>{closed}</td>
-            <td>{team}</td>
+            
             <td>
               <Button
                 className="btn btn-primary"
-                onClick={(e) => updateUser({  _id, title,type,assignedBy, assignedTo, org,createdAt, status, closed, team})}
+                onClick={(e) => updateUser({  _id, title,type,assignedBy, assignedTo, org,createdAt, status, closed})}
               >
                 {" "}
                 <i class="fas fa-pen-nib"></i>
@@ -102,7 +102,7 @@ const IssueManager = () => {
     };
     return (
       <div>
-        <h1 className="text-center">faltu log ka faltu data</h1>
+        <h1 className="text-center">Faltu logo ka faltu data </h1>
         <div className="row">
           <div className="col-md">
             <table className="table table-dark">

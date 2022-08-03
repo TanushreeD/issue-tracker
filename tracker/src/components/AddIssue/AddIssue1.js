@@ -1,12 +1,14 @@
+import { Button, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import '../AddIssue/AddIssue1.css';
 
 const AddIssue1 = () => {
 
-    const [addIssue, setAddIssue] = useState(true);
+
     const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
-    
+
     const userSubmit = async (formdata) => {
         console.log(formdata);
         const response = await fetch('http://localhost:5000/issue/add', {
@@ -34,108 +36,116 @@ const AddIssue1 = () => {
 
         }
     };
-        return (
-            <div>
-                <h1 className='text-center mt-2'>Issue Record Form</h1>
-                <div className='container mt-4'>
-                    <Formik
-                        initialValues={{
-                            title: '',
-                            type: '',
-                            assingedTo: '',
-                            assingedBy: currentUser._id,
-                            createdAt: new Date(),
-                        }}
-                        onSubmit={userSubmit}>
-                        {({ values, handleChange, handleSubmit }) => (
-                            <form onSubmit={handleSubmit}>
-                                {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
-                                <div class="row mb-4">
-
-                                    <div class="form-outline">
-                                        <input type="text" id="title" class="form-control"
-                                            onChange={handleChange}
-                                            value={values.title}
-                                        />
-                                        <label class="form-label" for="form6Example1">Title</label>
-                                    </div>
+    return (
+        <div className='main'>
 
 
-                                    <div class="form-outline">
-                                        <input type="text" id="type" class="form-control"
-                                            onChange={handleChange}
-                                            value={values.type}
-                                        />
-                                        <label class="form-label" for="form6Example2">Description</label>
-                                    </div>
-                                </div>
 
-                                {/* <!-- Text input --> */}
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="org" class="form-control"
+            <div className='container contain mt-4 '>
+                <h3 className='text-center'>IssueTracker Form</h3>
+                <h6 className='text-muted subheading '>Enter the details of the project so we can track the issues in an informative way</h6>
+                <Formik
+                    initialValues={{
+                        title: '',
+                        type: '',
+                        org: '',
+                        assignedTo: '',
+                        // assignedBy: currentUser._id,
+                        createdAt: new Date(),
+                        status: '',
+                        closed: false
+
+                    }}
+                    onSubmit={userSubmit}>
+                    {({ values, handleChange, handleSubmit }) => (
+                        <form onSubmit={handleSubmit}>
+                            {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
+                            <div class="row mb-2">
+
+                                <div className="form-outline boxes">
+                                    <label className="form-label" for="form6Example1">Title</label>
+
+                                    <TextField type="text" id="title" className="form-control"
                                         onChange={handleChange}
-                                        value={values.org}
+                                        value={values.title}
                                     />
-                                    <label class="form-label" for="form6Example3">Organisation</label>
+
                                 </div>
 
-                                {/* <!-- Text input --> */}
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="assignedTo" class="form-control"
+
+                                <div className="form-outline boxes" >
+                                    <label className="form-label" for="form6Example2">Description</label>
+                                    < textarea rows='3' id="type" className="form-control"
                                         onChange={handleChange}
-                                        value={values.assignedTo}
-                                    />
-                                    <label class="form-label" for="form6Example4">Assigned To</label>
+                                        value={values.type}></textarea>
+
                                 </div>
+                            </div>
 
-                                {/* <!-- Email input --> */}
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="assignedBy" class="form-control"
+                            {/* <!-- Text input --> */}
+                            <div className="form-outline  boxes">
+                                <label className="form-label" for="form6Example3">Organisation</label>
+                                <TextField type="text" id="org" className="form-control"
+                                    onChange={handleChange}
+                                    value={values.org}
+                                />
+                            </div>
 
-                                        onChange={handleChange}
-                                        value={values.assignedBy} />
-                                    <label class="form-label" for="form6Example5">Assigned By</label>
-                                </div>
+                            {/* <!-- Text input --> */}
+                            <div className="form-outline  boxes">
+                                <label className="form-label" for="form6Example4">Assigned To</label>
+                                <TextField type="text" id="assignedTo" className="form-control"
+                                    onChange={handleChange}
+                                    value={values.assignedTo}
+                                />
+                            </div>
 
-                                {/* <!-- Number input --> */}
-                                <div class="form-outline mb-4">
-                                    <input type="Date" id="createdAt" class="form-control"
+                            {/* <!-- Email input --> */}
+                            <div className="form-outline  boxes">
 
-                                        onChange={handleChange}
-                                        value={values.createdAt} />
-                                    <label class="form-label" for="form6Example6">Date</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="status" class="form-control"
+                                <label className="form-label" for="form6Example5">Assigned By</label>                                    <TextField type="text" id="assignedBy" className="form-control"
 
-                                        onChange={handleChange}
-                                        value={values.status} />
-                                    <label class="form-label" for="form6Example6">Status</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="closed" class="form-control"
+                                // onChange={handleChange}
+                                // value={values.assignedBy}
+                                />
+                            </div>
 
-                                        onChange={handleChange}
-                                        value={values.closed} />
-                                    <label class="form-label" for="form6Example6">Closed</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="team" class="form-control"
+                            {/* <!-- Number input --> */}
+                            <div className="form-outline  boxes">
+                                <label class="form-label" for="form6Example6">Date</label>
+                                <TextField type="Date" id="createdAt" className="form-control"
 
-                                        onChange={handleChange}
-                                        value={values.team} />
-                                    <label class="form-label" for="form6Example6">Team</label>
-                                </div>
-                                <div className='text-center'>
-                                    <button className='btn btn-dark' type='submit'>Submit</button>
-                                </div>
-                            </form>
-                        )}
-                    </Formik>
-                </div>
+                                    onChange={handleChange}
+                                    value={values.createdAt} />
+                            </div>
+                            <div className="form-outline  boxes">
+                                <label className="form-label" for="form6Example6">Status</label>
 
+                                <TextField type="text"
+                                    onChange={handleChange}
+                                    value={values.status}
+                                    id="status" className="form-control"
+
+                                />
+                            </div>
+                            
+                            <div className="form-outline  boxes">
+                            <label className="form-label " for="form6Example6">Closed</label>
+                                <TextField type="text" id="closed" className="form-control"
+                                    onChange={handleChange}
+                                    value={values.closed} />
+
+                            </div>
+                            <div className='text-center  mt-4'>
+                                <button className='btn btn-primary w-100' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    )}
+                </Formik>
             </div>
-        )
-    }
 
-    export default AddIssue1;
+        </div>
+    )
+}
+
+export default AddIssue1;
