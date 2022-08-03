@@ -4,7 +4,7 @@ const {Schema, model, Types} = require('../connection');
 const schemaObj=new Schema({
     title:String,
     type: String, 
-    assignedBy : {type:Types.ObjectId,ref:"user"},
+    assignedBy : {type:Types.ObjectId,ref:"users"},
     assingedTo : String,
     createdAt: Date,
     org :String,
