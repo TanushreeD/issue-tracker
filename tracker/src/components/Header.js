@@ -23,10 +23,10 @@ const Header = () => {
         
         
         <li class="nav-item">
-          <NavLink className="nav-link active text-white" to="/login">Login</NavLink>
+          <NavLink className="nav-link active text-white" to="/login1">Login</NavLink>
         </li>
         <li class="nav-item">
-          <NavLink className="nav-link active text-white" to="/add"
+          <NavLink className="nav-link active text-white" to="/addissue"
             >Issue Form</NavLink>
         </li>
       </ul>

@@ -11,6 +11,9 @@
   }
  .bg-image{
     background-image: url('https://assets.justinmind.com/wp-content/uploads/2018/12/6-best-practices-for-Dashboard-Design-Justinmind-header-768x492.png');
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
     
   
 

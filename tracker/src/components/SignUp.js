@@ -36,7 +36,7 @@ const SignUp = () => {
                 title: "Well Done!!👌",
                 text: "Wonderful JOB!!"
             })
-            navigate("/login")
+            navigate("/login1")
         } else {
             console.log('error occured');
             Swal.fire({
