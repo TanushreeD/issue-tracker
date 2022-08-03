@@ -27,7 +27,7 @@ const Login1 = () => {
                 title: "Wellcome!!👌",
                 text: "Enter a new World!!",
             });
-            navigate("/");
+            navigate("/addissue");
             const data = await res.json();
             sessionStorage.setItem("user", JSON.stringify(data));
         } else {

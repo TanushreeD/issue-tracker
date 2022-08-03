@@ -87,13 +87,13 @@ const IssueManager = () => {
                 onClick={(e) => updateUser({  _id, title,type,assignedBy, assignedTo, org,createdAt, status, closed})}
               >
                 {" "}
-                <i class="fas fa-pen-nib"></i>
+                <i className="fas fa-pen-nib"></i>
               </Button>
             </td>
             <td>
               <Button className="btn btn-danger"
                onClick={(e) => deleteUser(_id)}>
-                <i class="fas fa-trash"></i>{" "}
+                <i className="fas fa-trash"></i>{" "}
               </Button>
             </td>
           </tr>

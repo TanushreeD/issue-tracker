@@ -7,7 +7,7 @@ import '../AddIssue/AddIssue1.css';
 const AddIssue1 = () => {
 
 
-    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")));
 
     const userSubmit = async (formdata) => {
         console.log(formdata);
@@ -50,7 +50,7 @@ const AddIssue1 = () => {
                         type: '',
                         org: '',
                         assignedTo: '',
-                        // assignedBy: currentUser._id,
+                        assignedBy: currentUser._id,
                         createdAt: new Date(),
                         status: '',
                         closed: false
