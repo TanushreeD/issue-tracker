@@ -8,6 +8,7 @@ function AddIssue() {
   const userSubmit = (formdata) => {
     console.log(formdata)
   }
+  
   return (
     <div className="adds">
       <div className="container mt-5 contain">
@@ -34,7 +35,6 @@ function AddIssue() {
                     <TextField className="mt-3" label="Description" id="type" onChange={handleChange} value={values.type} />
                     <FormControl sx={{ m: 0, width: 420, marginTop: 3 }}>
                       <InputLabel id="assignedTo">Opened by</InputLabel>
-
                       <Select labelId="assign-label" id="assingedTo" value={values.assingedTo} label="Assign to" onChange={handleChange}>
                         <MenuItem value={10}>Tanushree</MenuItem>
                         <MenuItem value={20}>Utkarsh</MenuItem>
