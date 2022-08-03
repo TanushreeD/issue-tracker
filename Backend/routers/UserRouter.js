@@ -42,7 +42,7 @@ router.get("/getbyemail/:email", (req, res) => {
 router.get("/getbyid/:id", (req, res) => {
   const id = req.params.id
   console.log(id)
-  Model.findById(req.params.id)
+  Model.findById(req.params.id).populate('team')
     .then((result) => {
       res.json(result)
     })
@@ -80,7 +80,7 @@ router.put("/update/:id", (req, res) => {
 
 router.post("/authenticate", (req, res) => {
   const formdata = req.body
-  Model.findOne({ email: formdata.email, password: formdata.password })
+  Model.findOne({ email: formdata.email, password: formdata.password }).populate('team')
     .then((result) => {
       console.log(result)
       if (result) {
