@@ -1,7 +1,7 @@
 const {Schema, model, Types} = require('../connection');
 
 const schemaObj=new Schema({
-    name:String,
+    username:String,
     mobile: String, 
     age : Number,
     email : String,

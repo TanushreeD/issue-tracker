@@ -104,7 +104,7 @@ const UserManager = () => {
           <table className="table table-dark">
             <thead>
               <tr>
-                <th>Uername</th>
+                <th>Username</th>
                 <th>Mobile</th>
                 <th>Email</th>
                 <th>Password</th>
