@@ -11,21 +11,29 @@ import CheckTeam from './components/TeamExist';
 import NotCheckTeam from './components/NotTeamExist';
 import Team from './components/Team';
 import Track from './components/Track';
+import Authorisor from './components/Auth';
+import { useState } from 'react';
+import { UserProvider } from './components/useContext';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")))
   
   return (
     <div className='grey-card-container'>
       <div>
+      <UserProvider user={currentUser}>
         <BrowserRouter>
         <Header></Header>
         <Routes>
         <Route element ={<Home></Home>} path="/"/>
            <Route element={<SignUp></SignUp>} path="SignUp" />
            <Route element={
+            <Authorisor>
+              
             <NotCheckTeam>
               <AddIssue1/>
             </NotCheckTeam>
+            </Authorisor>
            } path="addissue" />
            
            <Route element={<Login1 />} path="login1" />
@@ -36,6 +44,7 @@ function App() {
            <Route element ={<Track/>} path="track"/>
            </Routes>
         </BrowserRouter>
+        </UserProvider>
       </div>
       
     </div>
