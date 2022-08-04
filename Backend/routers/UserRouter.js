@@ -68,7 +68,7 @@ router.delete("/delete/:id", (req, res) => {
 router.put("/update/:id", (req, res) => {
   const id = req.params.id
   console.log(id)
-  Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Model.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate('team')
     .then((result) => {
       res.json(result)
     })

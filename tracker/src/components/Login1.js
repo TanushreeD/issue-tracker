@@ -1,13 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import './Login1.css'
 import { Button } from "@mui/material"
 import { Formik } from "formik"
 import { Link, useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import * as Yup from "yup"
+import { UserContext } from "./useContext"
 
 const Login1 = () => {
     const navigate = useNavigate();
+    const { setLoggedIn, setCurrentUser } = useContext(UserContext);
 
     const userSubmit = async (formdata) => {
         console.log(formdata)
@@ -27,9 +29,11 @@ const Login1 = () => {
                 title: "Wellcome!!👌",
                 text: "Enter a new World!!",
             });
-            navigate("/addissue");
             const data = await res.json();
             sessionStorage.setItem("user", JSON.stringify(data));
+            setLoggedIn(true);
+      setCurrentUser(data);
+            navigate("/addissue");
         } else {
             console.log("Login error ");
             Swal.fire({
