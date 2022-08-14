@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
@@ -38,11 +37,11 @@ const IssueManager = () => {
       }
     };
   
-    const updateUser = (user) => {
-      console.log(user);
-      setUpdateFormData(user);
-      setShowUpdateForm(user);
-    };
+    // const updateUser = (user) => {
+    //   console.log(user);
+    //   setUpdateFormData(user);
+    //   setShowUpdateForm(user);
+    // };
     useEffect(() => {
       getDataFromBackend();
     }, []);
@@ -59,14 +58,15 @@ const IssueManager = () => {
               ></span>
               <span class="visually-hidden">Loading...</span>
             </button>
-            <button class="btn btn-primary" type="button" disabled>
-              <span
-                class="spinner-grow spinner-grow-sm"
-                role="status"
-                aria-hidden="true"
-              ></span>
-              Loading...
-            </button>
+            <button class="btn btn-primary" type="button">
+            <span
+              class="spinner-grow spinner-grow-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            Loading...
+          </button>
+           
           </div>
         );
       } else {
@@ -76,33 +76,33 @@ const IssueManager = () => {
             <td>{type}</td>
             <td>{assignedBy}</td>
             <td>{assignedTo}</td>
-            <td>{createdAt}</td>
             <td>{org}</td>
+            <td>{createdAt}</td>
             <td>{status}</td>
             <td>{closed}</td>
             
-            <td>
-              <Button
-                className="btn btn-primary"
-                onClick={(e) => updateUser({  _id, title,type,assignedBy, assignedTo, org,createdAt, status, closed})}
-              >
-                {" "}
-                <i className="fas fa-pen-nib"></i>
-              </Button>
-            </td>
-            <td>
-              <Button className="btn btn-danger"
-               onClick={(e) => deleteUser(_id)}>
-                <i className="fas fa-trash"></i>{" "}
-              </Button>
-            </td>
+            {/* <td>
+            <Button
+              className="btn btn-primary"
+              onClick={(e) => updateUser({ _id,title,type,assignedBy, assignedTo, org,createdAt, status, closed})}
+            >
+              {" "}
+              <i class="fas fa-pen-nib"></i>
+            </Button>
+          </td>
+          <td>
+            <Button className="btn btn-danger"
+             onClick={(e) => deleteUser(_id)}>
+              <i class="fas fa-trash"></i>{" "}
+            </Button>
+          </td> */}
           </tr>
         ));
       }
     };
     return (
       <div>
-        <h1 className="text-center">Faltu logo ka faltu data </h1>
+        <h1 className="text-center">database</h1>
         <div className="row">
           <div className="col-md">
             <table className="table table-dark">
@@ -112,12 +112,10 @@ const IssueManager = () => {
                   <th>Description</th>
                   <th>Assigned By</th>
                   <th>Assigned To</th>
-                  <th>Date</th>
                   <th>Organisation</th>
+                  <th>Date</th>
                   <th>Status</th>
                   <th>Closed</th>
-                  <th>    </th>
-                  <th>   </th>
                 </tr>
               </thead>
               <tbody>{displayUser()}</tbody>
@@ -139,4 +137,4 @@ const IssueManager = () => {
     );
   };
 
-export default IssueManager
+export default IssueManager;
